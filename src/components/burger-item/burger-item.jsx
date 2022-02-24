@@ -8,7 +8,7 @@ import classes from './burger-item.module.scss';
 const BurgerItem = ( { name, image, price } ) => {
   return (
     <li className={`${classes['burger-list__item']} mb-8`}>
-      <img src={image} alt="Изображение булки" className="pl-4 pr-4 mb-1"/>
+      <img src={image} alt={name} className="pl-4 pr-4 mb-1"/>
       <div className={`${classes['content-wrapper']} mb-1`}>
         <p className="text text_type_digits-default mr-1">{price}</p>
         <CurrencyIcon type="primary" />

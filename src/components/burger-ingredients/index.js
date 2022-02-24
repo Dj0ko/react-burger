@@ -1,2 +1,1 @@
-import BurgerIngredients from "./burger-ingredients";
-export default BurgerIngredients;
+export { default } from './burger-ingredients';

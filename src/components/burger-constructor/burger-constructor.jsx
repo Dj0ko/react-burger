@@ -1,28 +1,31 @@
-import React from "react";
+import React, { useMemo } from "react";
 import PropTypes from 'prop-types';
 
 import { ConstructorElement, DragIcon, Button, CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import classes from './burger-constructor.module.scss';
 
-// Проверка типов
-const receivedData = PropTypes.shape({
-  calories: PropTypes.number,
-  carbohydrates: PropTypes.number,
-  fat: PropTypes.number,
-  image: PropTypes.string,
-  image_large: PropTypes.string,
-  image_mobile: PropTypes.string,
-  name: PropTypes.string,
-  price: PropTypes.number,
-  proteins: PropTypes.number,
-  type: PropTypes.string,
-  __v: PropTypes.number,
-  _id: PropTypes.string
-});
+import { receivedData } from '../../types/types';
 
 const BurgerConstructor = ({ data }) => {
 
-  const total = data.map(burger => burger.price).reduce((price, acc) => price + acc);
+  // Рассчитываем итоговую стоимость
+  const total = useMemo(() => data.map(burger => burger.price).reduce((price, acc) => price + acc));
+
+  // Собираем все ингридиенты
+  const burgerIngredients = data.map(burger => {
+    if (burger.type !== 'bun') {
+      return (
+      <div className={`${classes['burger-constructor__list-item']} mb-4`} key={burger._id}>
+        <span className={classes.icon}><DragIcon type="primary"/></span>
+        <ConstructorElement
+          text={burger.name}
+          price={burger.price}
+          thumbnail={burger.image}
+          className={classes.sss}
+        />
+      </div>)}
+    return null;
+  })  
 
   return (
     <section className={classes['burger-constructor']}>
@@ -37,20 +40,7 @@ const BurgerConstructor = ({ data }) => {
           />
         </div>
         <div className={classes.scroll}>
-          {data.map(burger => {
-            if (burger.type !== 'bun') {
-              return (
-              <div className={`${classes['burger-constructor__list-item']} mb-4`} key={burger._id}>
-                <span className={classes.icon}><DragIcon type="primary"/></span>
-                <ConstructorElement
-                  text={burger.name}
-                  price={burger.price}
-                  thumbnail={burger.image}
-                  className={classes.sss}
-                />
-              </div>)}
-            return null;
-        })}
+          {burgerIngredients}
         </div>
         <div className="mb-4">
           <ConstructorElement
@@ -65,10 +55,10 @@ const BurgerConstructor = ({ data }) => {
 
       <div className={`${classes['content-wrapper']} pr-8`}>
         <div className={`${classes['price-wrapper']} mr-10`}>
-        <p className="text text_type_main-large mr-2">
+        <p className="text text_type_main-medium mr-2">
           {total}
         </p>
-        <CurrencyIcon type="primary"/>
+        <CurrencyIcon type="primary" style={{width: '33px', height: '33px'}}/>
         </div>
         <Button type="primary" size="large">
           Оформить заказ

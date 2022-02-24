@@ -7,17 +7,23 @@ const AppHeader = () => {
     <header className={classes['app-header']}>
       <nav className={`${classes['app-nav']} pb-4 pt-4`}>
         <ul className={classes['app-nav__list']}>
-          <li className={`${classes['app-nav__list-item']} p-5 mr-2`}>
-            <BurgerIcon type="primary" />
-            <a href="#" className={`text text_type_main-default text_color_inactive ml-2 ${classes.link} ${classes['link--active']}`}>Конструктор</a>
+          <li className="mr-2">
+            <a href="#" className={`text text_type_main-default text_color_inactive ${classes.link} ${classes['link--active']} p-5`}>
+              <BurgerIcon type="primary" />
+              <span className="ml-2">Конструктор</span>
+            </a>
           </li>
-          <li className={`${classes['app-nav__list-item']} p-5 mr-2`}>
-            <ListIcon type="secondary" />
-            <a href="#" className={`text text_type_main-default text_color_inactive ml-2 ${classes.link}`}>Лента заказов</a>
+          <li className="mr-2">
+            <a href="#" className={`text text_type_main-default text_color_inactive ${classes.link} p-5`}>
+              <ListIcon type="secondary" />
+              <span className="ml-2">Лента заказов</span>
+            </a>
           </li>
-          <li className={`${classes['app-nav__list-item']} ${classes['app-nav__list-item--ml']} p-5 mr-2`}>
-            <ProfileIcon type="secondary" />
-            <a href="#" className={`text text_type_main-default text_color_inactive ml-2 ${classes.link}`}>Личный кабинет</a>
+          <li className={`${classes['ml-auto']} mr-2`}>
+            <a href="#" className={`text text_type_main-default text_color_inactive ${classes.link} p-5`}>
+              <ProfileIcon type="secondary" />
+              <span className="ml-2">Личный кабинет</span>
+            </a>
           </li>
         </ul>
       </nav>

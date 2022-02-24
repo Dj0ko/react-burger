@@ -1,24 +1,23 @@
 .app-header {
   position: relative;
-  width: 100%;
-  padding-left: 320px;
-  padding-right: 320px;
 
-  box-sizing: border-box;
   background-color: #1c1c21;
 }
 
 .app-nav {
   display: flex;
   align-items: center;
+
+  width: 1280px;
+  margin: 0 auto;
 }
 
 .logo {
   position: absolute;
 
-  top: 52px;
-  left: 815px;
-  transform: translateY(-50%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-41%, -50%);
 }
 
 .app-nav__list {
@@ -30,19 +29,15 @@
   padding: 0;
 }
 
-.app-nav__list-item {
-  display: flex;
-  align-items: center;
-
-  border-radius: 40px;
-}
-
-.app-nav__list-item--ml {
+.ml-auto {
   margin-left: auto;
 }
 
 .link {
+  display: flex;
+  align-items: center;
   text-decoration: none;
+  border-radius: 40px;
 
   &--active {
     color: #f2f2f3;

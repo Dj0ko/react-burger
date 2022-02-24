@@ -1,2 +1,1 @@
-import BurgerBun from "./burger-item";
-export default BurgerBun;
+export { default } from './burger-item';
