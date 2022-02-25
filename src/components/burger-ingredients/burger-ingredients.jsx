@@ -12,15 +12,15 @@ const BurgerIngredients = ({ data }) => {
 
   // Список булок
   const bunList = data.filter(burger => burger.type === "bun")
-  .map(burger => <BurgerItem key={burger._id} {...burger}/>);
+  .map(burgerData => <BurgerItem key={burgerData._id} {...burgerData}/>);
 
   // Список соусов
   const sauceList = data.filter(burger => burger.type === "sauce")
-  .map(burger => <BurgerItem key={burger._id} {...burger}/>);
+  .map(burgerData => <BurgerItem key={burgerData._id} {...burgerData}/>);
 
   // Список начинок
   const mainList = data.filter(burger => burger.type === "main")
-  .map(burger => <BurgerItem key={burger._id} {...burger}/>);
+  .map(burgerData => <BurgerItem key={burgerData._id} {...burgerData}/>);
 
   return (
     <section className={classes['burger-ingredients']}>
