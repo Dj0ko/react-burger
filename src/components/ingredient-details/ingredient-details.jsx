@@ -3,9 +3,7 @@ import PropTypes from 'prop-types';
 
 import classes from './ingredients-details.module.scss';
 
-const IngredientDetails = ({ energy }) => {
-  const { calories, carbohydrates, fat, image_large, name, proteins } = energy;
-
+const IngredientDetails = ({ calories, carbohydrates, fat, image_large, name, proteins }) => {
   const energyValue = (
     <ul className={classes['energy-value__list']}>
       <li className={classes['energy-value__list-item']}>
@@ -37,12 +35,12 @@ const IngredientDetails = ({ energy }) => {
 }
 
 IngredientDetails.propTypes = {
-  calories: PropTypes.number,
-  carbohydrates: PropTypes.number,
-  fat: PropTypes.number,
-  image_large: PropTypes.string,
-  name: PropTypes.string,
-  proteins: PropTypes.number,
+  calories: PropTypes.number.isRequired,
+  carbohydrates: PropTypes.number.isRequired,
+  fat: PropTypes.number.isRequired,
+  image_large: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  proteins: PropTypes.number.isRequired,
 }
 
 export default IngredientDetails;

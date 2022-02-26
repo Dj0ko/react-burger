@@ -1,8 +1,8 @@
 class BurgerService {
-  apiBase = `https://norma.nomoreparties.space/api/ingredients`;
+  apiBase = `https://norma.nomoreparties.space/api/`;
 
   async getBurgersData() {
-    const res = await fetch(this.apiBase);
+    const res = await fetch(`${this.apiBase}ingredients`);
 
     if (!res.ok) {
       throw new Error();
