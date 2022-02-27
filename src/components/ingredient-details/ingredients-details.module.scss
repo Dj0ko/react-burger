@@ -1,0 +1,16 @@
+.energy-value__list {
+  padding: 0;
+  margin: 0;
+  width: 480px;
+
+  display: flex;
+  justify-content: space-between;
+
+  list-style: none;
+}
+
+.energy-value__list-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
