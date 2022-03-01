@@ -1,21 +1,23 @@
 import React, { useState } from "react";
 import PropTypes from 'prop-types';
 
+// Импорт компонентов
 import { CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import Modal from '../modal';
 import IngredientDetails from "../ingredient-details";
 
+// Импорт стилей
 import classes from './burger-item.module.scss';
 
 const BurgerItem = (burgerData) => {
+  // Получаем необходимые переменные
   const { calories, carbohydrates, fat, image, image_large, name, price, proteins } = burgerData;
-  const [ isOpened, showModal ] = useState(false);
 
+  const [ isOpened, showModal ] = useState(false); // хук, управляющий показом модального окна
+
+  // Реализация открытия и закрытия модальных окон
   const openModal = () => showModal(true);
-
-  const closeModal = (e) => {
-    showModal(false)
-  }; 
+  const closeModal = () => showModal(false);
 
   return (
     <>
