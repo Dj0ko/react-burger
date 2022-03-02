@@ -24,21 +24,9 @@ const BurgerConstructor = () => {
   const openModal = () => showModal(true);
   const closeModal = () => showModal(false);
 
-  // Собираем все ингредиенты
-  const burgerIngredients = data.map(burgerIngredient => {
-    if (burgerIngredient.type !== 'bun') {
-      return (
-      <div className={`${classes['burger-constructor__list-item']} mb-4`} key={burgerIngredient._id}>
-        <span className={classes.icon}><DragIcon type="primary"/></span>
-        <ConstructorElement
-          text={burgerIngredient.name}
-          price={burgerIngredient.price}
-          thumbnail={burgerIngredient.image}
-        />
-      </div>
-      )}
-    return null;
-  })  
+
+  // Собираем ингредиенты без булок
+  const ingredientsWithoutBun = data.filter(ingredients => ingredients.type !== 'bun');
 
   // Выбираем булку
   const bun = data.find(burgerIngredient => burgerIngredient.type === 'bun');
@@ -54,9 +42,9 @@ const BurgerConstructor = () => {
   // Функция отправки запроса на создание заказа
   const createOrder = () => {
     // Собираем массив id ингредиентов, входящих в конструктор
-    const ingredients = data.map(item => item._id);
+    const ingredientsIds = data.map(item => item._id);
 
-    burgerService.sendOrder(ingredients)
+    burgerService.sendOrder(ingredientsIds)
       .then(data => {
         setOrderNumber(data.order.number);
         openModal();
@@ -77,7 +65,19 @@ const BurgerConstructor = () => {
           />
         </div>
         <div className={classes.scroll}>
-          {burgerIngredients}
+          {ingredientsWithoutBun.map(burgerIngredient => {
+              return (
+              <div className={`${classes['burger-constructor__list-item']} mb-4`} key={burgerIngredient._id}>
+                <span className={classes.icon}><DragIcon type="primary"/></span>
+                <ConstructorElement
+                  text={burgerIngredient.name}
+                  price={burgerIngredient.price}
+                  thumbnail={burgerIngredient.image}
+                />
+              </div>
+              )
+            })
+          }
         </div>
         <div className="mb-4">
           <ConstructorElement
