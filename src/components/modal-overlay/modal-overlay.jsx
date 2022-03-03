@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import classes from './modal-overlay.module.scss';
 
 const ModalOverlay = (props) => {
+  // Реализация закрытия модального окна по клику на оверлей
   useEffect(() => {
       const onKeypress = e => ( e.key === 'Escape') ? props.closeModal() : null;
     

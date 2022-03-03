@@ -8,6 +8,7 @@ import { CloseIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import classes from './modal.module.scss';
 
 const Modal = (props) => {
+  // Получаем необходимые переменные
   const { title, closeModal, children } = props;
   
   const modal = (

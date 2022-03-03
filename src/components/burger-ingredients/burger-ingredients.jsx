@@ -1,14 +1,14 @@
-import React from "react";
-import PropTypes from 'prop-types';
-import BurgerItem from "../burger-item";
+import React, { useContext } from "react";
 
-import { Tab } from '@ya.praktikum/react-developer-burger-ui-components';
+import BurgerItem from "../burger-item";
+import Tabs from "../tabs/tabs";
+
 import classes from './burger-ingredients.module.scss';
 
-import { receivedData } from '../../types/types';
+import { IngredientsContext } from "../../services/app-context";
 
-const BurgerIngredients = ({ data }) => {
-  const [current, setCurrent] = React.useState('bun');
+const BurgerIngredients = () => {
+  const { data } = useContext(IngredientsContext);
 
   // Список булок
   const bunList = data.filter(burger => burger.type === "bun")
@@ -25,17 +25,7 @@ const BurgerIngredients = ({ data }) => {
   return (
     <section className={classes['burger-ingredients']}>
       <h1 className="text text_type_main-large mt-10 mb-5">Соберите бургер</h1>
-      <div style={{ display: 'flex' }} className="mb-10">
-        <Tab value="bun" active={current === 'one'} onClick={setCurrent}>
-          Булки
-        </Tab>
-        <Tab value="sauce" active={current === 'two'} onClick={setCurrent}>
-          Соусы
-        </Tab>
-        <Tab value="main" active={current === 'three'} onClick={setCurrent}>
-          Начинки
-        </Tab>
-      </div>
+      <Tabs />
       
       <div className={classes.scroll}>
         <section>
@@ -61,10 +51,6 @@ const BurgerIngredients = ({ data }) => {
       </div>
     </section>
   )
-}
-
-BurgerIngredients.propTypes = {
-  data: PropTypes.arrayOf(receivedData).isRequired
 }
 
 export default BurgerIngredients;
